@@ -1,0 +1,30 @@
+# OpenAPI
+Basepath ; teched2020/sha_performance
+
+# Write File
+Path Mode ; Static (from config)
+Write File ; Path ; /shared/SHA/performance_xtra.csv
+Mode ; Overwrite
+
+# Postman
+POST ; https://vsystem.ingress.dh-ia37o5zq.dhaas-live.shoot.live.k8s-hana.ondemand.com/app/pipeline-modeler/openapi/service/teched2020/sha_performance/test
+Authorization Username ; default\[INSERTHERE]
+Authorization Pwd ; [INSERTHERE]
+Header Key ; X-Requested-With
+Header Value ; XMLHttpRequest
+Body Text ; 
+"TIMESTAMP","CELLID","KEY1","KEY2"
+"2020-12-28 20:06:55",1234512,111.1,222.2
+Body JSON ; 
+[
+ {
+   "TIMESTAMP": "2020-12-28 20:06:55",
+   "CELLID": 1234512,
+   "KEY1": 111.1,
+   "KEY2": 222.2
+ }
+]
+
+#Python
+python ./celldata.py --cellid 1234512 --user <di_user> --pwd <password>
+python ./celldata.py --cellid 1234512 --user [INSERTHERE] --pwd [INSERTHERE]
