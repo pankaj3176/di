@@ -1,0 +1,58 @@
+[
+	{
+		"name": "TIMESTAMP",
+		"type": "DATE"
+	},
+	{
+		"name": "STATUS",
+		"type": "VARCHAR",
+		"size": 100
+	},
+	{
+		"name": "COMMENT",
+		"type": "VARCHAR",
+		"size": 100
+	},
+	{
+		"name": "DATE",
+		"type": "DATE"
+	},
+	{
+		"name": "CELLID",
+		"type": "INTEGER"
+	},
+	{
+		"name": "KEY1",
+		"type": "VARCHAR",
+		"size": 100
+	},
+	{
+		"name": "KEY2",
+		"type": "VARCHAR",
+		"size": 100
+	},
+	{
+		"name": "NOM_KEY1",
+		"type": "FLOAT",
+		"size": 32
+	},
+	{
+		"name": "NOM_KEY2",
+		"type": "FLOAT",
+		"size": 32
+	},
+	{
+		"name": "ERROR_ACTION",
+		"type": "VARCHAR",
+		"size": 100
+	},
+	{
+		"name": "ERROR_COLUMNS",
+		"type": "VARCHAR",
+		"size": 100
+	},
+	{
+		"name": "ROW_ID",
+		"type": "INTEGER"
+	}
+]
