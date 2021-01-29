@@ -1,0 +1,34 @@
+# KEY1 for all Cells
+mean = df['KEY1'].mean()
+std = df['KEY1'].std()
+print('Statistics:\n\tav: {}\n\tsd: {}'.format(mean,std))
+exl_3s = df.loc[ (df.KEY1 < mean - 3*std) | (df.KEY1 > mean + 3*std),'KEY1'].count()
+print('Z3-score: \n\tactual #values: {}\n\ttarget #values: {}'.format(exl_3s,round(0.0027*df.shape[0])))
+
+# KEY2 for all Cells
+mean2 = df['KEY2'].mean()
+std2 = df['KEY2'].std()
+print('Statistics:\n\tav: {}\n\tsd: {}'.format(mean2,std2))
+exl_3s = df.loc[ (df.KEY2 < mean2 - 3*std2) | (df.KEY2 > mean2 + 3*std2),'KEY2'].count()
+print('Z3-score: \n\tactual #values: {}\n\ttarget #values: {}'.format(exl_3s,round(0.0027*df.shape[0])))
+
+# For Each Cell of KEY2
+cells = df.CELLID.unique()
+for c in cells:
+    dfc = df.loc[df.CELLID == c]
+    exl_3s = df.loc[(df.CELLID == c) & ((df.KEY2 < mean2 - 3*std2) | (df.KEY2 > mean2 + 3*std2)),'KEY2'].count()
+    print('Z3-score {}: \n\tactual #values: {}\n\ttarget #values: {}'.format(c,exl_3s,round(0.0027*dfc.shape[0])))
+
+# Detailed look on the outliers
+c = 1345331
+dfc = df.loc[(df.CELLID == c) & ((df.KEY2 < mean2 - 3*std2) | (df.KEY2 > mean2 + 3*std2))]
+display(dfc)
+
+# Data Connection 
+client = InsecureClient('http://datalake:50070')
+with client.read('/shared/Teched2020/TED_USER/performance.csv', encoding='utf-8') as reader:
+   df_p = pd.read_csv(reader)
+display(df_p)
+
+# Execute Python 
+python3 ./celldata.py --cellid 1234512 --user <di_user> --pwd <password>
